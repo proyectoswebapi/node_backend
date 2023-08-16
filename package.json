@@ -1,0 +1,33 @@
+{
+  "name": "igdapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/index.js",
+    "dev": "node --watch src/index.js",
+    "build": "cross-env NODE_ENV=development webpack --config build/webpack.config.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "express-validator": "^6.15.0",
+    "jsonwebtoken": "^9.0.0",
+    "morgan": "^1.10.0",
+    "mysql2": "^3.2.0",
+    "sequelize": "^6.29.1",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^4.6.3"
+  },
+  "keywors": [],
+  "autor": "Equipo de desarrollo I.G.D. S. A. S. <soporte@igdsas.com.co> (https://www.igdsas.com.co)",
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
+}

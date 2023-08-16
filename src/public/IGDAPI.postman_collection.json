@@ -1,0 +1,398 @@
+{
+	"info": {
+		"_postman_id": "d5a3d3b0-4d0d-4f78-9de7-2b71807d35cb",
+		"name": "IGDAPI",
+		"description": "Accesos a las rutas para las diferentes consultas de la API de IGD a los usuarios del sistema IGDPlus de crédito o de inventarios.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23645636",
+		"_collection_link": "https://warped-desert-964282.postman.co/workspace/Team-Workspace~2d7c1004-e3c3-4048-843e-dca84678a38f/collection/23645636-d5a3d3b0-4d0d-4f78-9de7-2b71807d35cb?action=share&creator=23645636&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "acceso",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"usuarioc\",\r\n    \"password\": \"contraseña\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"login"
+							]
+						},
+						"description": "Esta ruta, login, es la responsable de que un usuario pueda identificarse y poder acceder al aplicativo, como respueta se genera un token luego de validar al usuario y tomar los datos de conexión a la respectiva base de datos según el registro previamnete realizaro por la empresa IGD.\n\nDebemos enviar un JSON los respecitvos datos para acceder, a saber, usuario y contraseña"
+					},
+					"response": []
+				},
+				{
+					"name": "Registro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"nombre\": \"usuarioi\",\r\n\t\"email\": \"usuarioi@correo.net\",\r\n\t\"password\": \"contraseña\",\r\n\t\"nit_empresa\": \"901046580\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"register"
+							]
+						},
+						"description": "Con el registro, la empresa IGD, quien tiene los datos de las empresas que utilizar el sistema IGD Plus, puede crear cada usuario para ello se debe enviar un archivo JSON con los datos para el registro:\n\n1. nombre\n2. email\n3. password\n4. nit_empresa\n5. tipo"
+					},
+					"response": []
+				}
+			],
+			"description": "En esta carpeta podemos tener las rutas relacionada con la creación de nuevos usuarios por parte de la compañia IGD S.A.S. y el login que cada usuario debe realziar para poder tener acceso a las funcionalidades del aplicativo mediante esta API"
+		},
+		{
+			"name": "vistas",
+			"item": [
+				{
+					"name": "Saldos caja",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJpYXQiOjE2ODk5NjY0NDF9.Nkz7aAukk1PNdRHt1BvTf5U4nuVuSZKuITieWNnv68k",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/apiigd/v1/saldoscajas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"apiigd",
+								"v1",
+								"saldoscajas"
+							]
+						},
+						"description": "La ruta Saldos caja permite conoce los saldos a fecha de corte que hay en las cajas de la empresa."
+					},
+					"response": []
+				},
+				{
+					"name": "Créditos Recogidos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJpYXQiOjE2ODk5NjYxMDl9.pO2lUPhE4ql6zCvPOnirfqoj2TzbJdU42Obzj94Etqo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/apiigd/v1/creditosrecogidos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"apiigd",
+								"v1",
+								"creditosrecogidos"
+							]
+						},
+						"description": "La ruta Saldos caja permite conoce los saldos a fecha de corte que hay en las cajas de la empresa."
+					},
+					"response": []
+				},
+				{
+					"name": "Créditos Nuevos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJpYXQiOjE2ODk5NjYxMDl9.pO2lUPhE4ql6zCvPOnirfqoj2TzbJdU42Obzj94Etqo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/apiigd/v1/creditosnuevos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"apiigd",
+								"v1",
+								"creditosnuevos"
+							]
+						},
+						"description": "La ruta Saldos caja permite conoce los saldos a fecha de corte que hay en las cajas de la empresa."
+					},
+					"response": []
+				},
+				{
+					"name": "Recaudos por día",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJpYXQiOjE2ODk5NjYxMDl9.pO2lUPhE4ql6zCvPOnirfqoj2TzbJdU42Obzj94Etqo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/apiigd/v1/recaudosdia",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"apiigd",
+								"v1",
+								"recaudosdia"
+							]
+						},
+						"description": "La ruta Saldos caja permite conoce los saldos a fecha de corte que hay en las cajas de la empresa."
+					},
+					"response": []
+				},
+				{
+					"name": "Clientes Activos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJpYXQiOjE2ODk5NjYxMDl9.pO2lUPhE4ql6zCvPOnirfqoj2TzbJdU42Obzj94Etqo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/apiigd/v1/clientesactivos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"apiigd",
+								"v1",
+								"clientesactivos"
+							]
+						},
+						"description": "La ruta Saldos caja permite conoce los saldos a fecha de corte que hay en las cajas de la empresa."
+					},
+					"response": []
+				},
+				{
+					"name": "Créditos Refinanciados",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJpYXQiOjE2ODk5NjYxMDl9.pO2lUPhE4ql6zCvPOnirfqoj2TzbJdU42Obzj94Etqo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/apiigd/v1/creditosrefinanciados",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"apiigd",
+								"v1",
+								"creditosrefinanciados"
+							]
+						},
+						"description": "La ruta Saldos caja permite conoce los saldos a fecha de corte que hay en las cajas de la empresa."
+					},
+					"response": []
+				},
+				{
+					"name": "Ventas diarias",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJpYXQiOjE2ODc4NzA3Njh9.Jb5J-hOvJQR9Ri21ul_iApIsmkc6TGXFSN5brOZWlY0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/apiigd/v1/ventasdiarias",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"apiigd",
+								"v1",
+								"ventasdiarias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Giros gastos agrupado",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJpYXQiOjE2ODc4NzA3Njh9.Jb5J-hOvJQR9Ri21ul_iApIsmkc6TGXFSN5brOZWlY0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/apiigd/v1/girosgastosa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"apiigd",
+								"v1",
+								"girosgastosa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Giros gastos no agrupados",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJpYXQiOjE2ODc4NzA3Njh9.Jb5J-hOvJQR9Ri21ul_iApIsmkc6TGXFSN5brOZWlY0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/apiigd/v1/girosgastosn",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"apiigd",
+								"v1",
+								"girosgastosn"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ventas diarias Credito",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJpYXQiOjE2ODc4NzA3Njh9.Jb5J-hOvJQR9Ri21ul_iApIsmkc6TGXFSN5brOZWlY0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/apiigd/v1/ventasdiariascr",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"apiigd",
+								"v1",
+								"ventasdiariascr"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "En la carpeta de vistas tenemos el listado de las rutas que realizan las respectivas consultas que el apilcativo debe mostrar"
+		}
+	]
+}
