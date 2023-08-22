@@ -1,0 +1,469 @@
+{
+	"info": {
+		"_postman_id": "93af92be-62cc-483a-9221-9c01f093c8ec",
+		"name": "IGDAPI_Nube",
+		"description": "Accesos a las rutas para las diferentes consultas de la API de IGD a los usuarios del sistema IGDPlus de crédito o de inventarios.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23645636",
+		"_collection_link": "https://warped-desert-964282.postman.co/workspace/Team-Workspace~2d7c1004-e3c3-4048-843e-dca84678a38f/collection/23645636-93af92be-62cc-483a-9221-9c01f093c8ec?action=share&source=collection_link&creator=23645636"
+	},
+	"item": [
+		{
+			"name": "acceso",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n    \"nombre\": \"coomulpen\",\r\n    \"password\": \"contraseña\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://167.114.129.229:3100/login",
+							"protocol": "http",
+							"host": [
+								"167",
+								"114",
+								"129",
+								"229"
+							],
+							"port": "3100",
+							"path": [
+								"login"
+							]
+						},
+						"description": "Esta ruta, login, es la responsable de que un usuario pueda identificarse y poder acceder al aplicativo, como respueta se genera un token luego de validar al usuario y tomar los datos de conexión a la respectiva base de datos según el registro previamnete realizaro por la empresa IGD.\n\nDebemos enviar un JSON los respecitvos datos para acceder, a saber, usuario y contraseña"
+					},
+					"response": []
+				},
+				{
+					"name": "Registro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"nombre\": \"usuarioi\",\r\n\t\"email\": \"usuarioi@correo.net\",\r\n\t\"password\": \"contraseña\",\r\n\t\"nit_empresa\": \"901046580\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://167.114.129.229:3100/register",
+							"protocol": "http",
+							"host": [
+								"167",
+								"114",
+								"129",
+								"229"
+							],
+							"port": "3100",
+							"path": [
+								"register"
+							]
+						},
+						"description": "Con el registro, la empresa IGD, quien tiene los datos de las empresas que utilizar el sistema IGD Plus, puede crear cada usuario para ello se debe enviar un archivo JSON con los datos para el registro:\n\n1. nombre\n2. email\n3. password\n4. nit_empresa\n5. tipo"
+					},
+					"response": []
+				}
+			],
+			"description": "En esta carpeta podemos tener las rutas relacionada con la creación de nuevos usuarios por parte de la compañia IGD S.A.S. y el login que cada usuario debe realziar para poder tener acceso a las funcionalidades del aplicativo mediante esta API"
+		},
+		{
+			"name": "vistas",
+			"item": [
+				{
+					"name": "Saldos caja",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpYXQiOjE2OTIxMTYyNjh9.Ns4d5KCNp7zNj9HzJ-sksxGmT65ssjMKAmjCTUP1g8A",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://167.114.129.229:3100/apiigd/v1/saldoscajas",
+							"protocol": "http",
+							"host": [
+								"167",
+								"114",
+								"129",
+								"229"
+							],
+							"port": "3100",
+							"path": [
+								"apiigd",
+								"v1",
+								"saldoscajas"
+							]
+						},
+						"description": "La ruta Saldos caja permite conoce los saldos a fecha de corte que hay en las cajas de la empresa."
+					},
+					"response": []
+				},
+				{
+					"name": "Ventas diarias",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEyLCJpYXQiOjE2OTIxMDYwMDB9.XjkdBOY5KoPAw3_7cXd0FWdGXy7MMg1VDGeZeI_-pPg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://167.114.129.229:3100/apiigd/v1/ventasdiarias",
+							"protocol": "http",
+							"host": [
+								"167",
+								"114",
+								"129",
+								"229"
+							],
+							"port": "3100",
+							"path": [
+								"apiigd",
+								"v1",
+								"ventasdiarias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Giros gastos agrupado",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJpYXQiOjE2ODc5NzE5MzZ9.KgODY12x9mMsDUCHIdvaiCLxjVskHO-0eWHb2ydCUX0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://167.114.129.229:3100/apiigd/v1/girosgastosa",
+							"protocol": "http",
+							"host": [
+								"167",
+								"114",
+								"129",
+								"229"
+							],
+							"port": "3100",
+							"path": [
+								"apiigd",
+								"v1",
+								"girosgastosa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Giros gastos no agrupados",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJpYXQiOjE2ODY4NjQwMDJ9.jAaxLIs168IEjz9SAhJnl-4z52GBY9toViEnRzRspYw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://167.114.129.229:3100/apiigd/v1/girosgastosn",
+							"protocol": "http",
+							"host": [
+								"167",
+								"114",
+								"129",
+								"229"
+							],
+							"port": "3100",
+							"path": [
+								"apiigd",
+								"v1",
+								"girosgastosn"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ventas diarias Credito",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJpYXQiOjE2OTIwNDI1NzJ9.t2ArJ726oJAW5pueJIoO6YQnptG4SuMfXenA74QALzI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://167.114.129.229:3100/apiigd/v1/ventasdiariascr",
+							"protocol": "http",
+							"host": [
+								"167",
+								"114",
+								"129",
+								"229"
+							],
+							"port": "3100",
+							"path": [
+								"apiigd",
+								"v1",
+								"ventasdiariascr"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Créditos Recogidos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJpYXQiOjE2OTA5MTk5Njl9._392yucSJRPSf1ANU97p389R3hXDoA1-uyViEqCuRHQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://167.114.129.229:3100/apiigd/v1/creditosrecogidos",
+							"protocol": "http",
+							"host": [
+								"167",
+								"114",
+								"129",
+								"229"
+							],
+							"port": "3100",
+							"path": [
+								"apiigd",
+								"v1",
+								"creditosrecogidos"
+							]
+						},
+						"description": "La ruta Saldos caja permite conoce los saldos a fecha de corte que hay en las cajas de la empresa."
+					},
+					"response": []
+				},
+				{
+					"name": "Créditos Nuevos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJpYXQiOjE2OTA5MTk5Njl9._392yucSJRPSf1ANU97p389R3hXDoA1-uyViEqCuRHQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://167.114.129.229:3100/apiigd/v1/creditosnuevos",
+							"protocol": "http",
+							"host": [
+								"167",
+								"114",
+								"129",
+								"229"
+							],
+							"port": "3100",
+							"path": [
+								"apiigd",
+								"v1",
+								"creditosnuevos"
+							]
+						},
+						"description": "La ruta Saldos caja permite conoce los saldos a fecha de corte que hay en las cajas de la empresa."
+					},
+					"response": []
+				},
+				{
+					"name": "Recaudos por día",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE0LCJpYXQiOjE2OTIxMTYyMjZ9.BmnwgJCTrJylP1Yj6QpdvYzp7wu0EkYXfytVKd8Ph3c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://167.114.129.229:3100/apiigd/v1/recaudosdia",
+							"protocol": "http",
+							"host": [
+								"167",
+								"114",
+								"129",
+								"229"
+							],
+							"port": "3100",
+							"path": [
+								"apiigd",
+								"v1",
+								"recaudosdia"
+							]
+						},
+						"description": "La ruta Saldos caja permite conoce los saldos a fecha de corte que hay en las cajas de la empresa."
+					},
+					"response": []
+				},
+				{
+					"name": "Recaudos por día Inventario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEyLCJpYXQiOjE2OTE4NDk1NzV9.NqOH8z1fCFR9s_sidzwshwp7sx8K5GvfAnhxjiK3wA0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://167.114.129.229:3100/apiigd/v1/recaudosdiainv",
+							"protocol": "http",
+							"host": [
+								"167",
+								"114",
+								"129",
+								"229"
+							],
+							"port": "3100",
+							"path": [
+								"apiigd",
+								"v1",
+								"recaudosdiainv"
+							]
+						},
+						"description": "La ruta Saldos caja permite conoce los saldos a fecha de corte que hay en las cajas de la empresa."
+					},
+					"response": []
+				},
+				{
+					"name": "Clientes Activos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJpYXQiOjE2OTA5MTk5Njl9._392yucSJRPSf1ANU97p389R3hXDoA1-uyViEqCuRHQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://167.114.129.229:3100/apiigd/v1/clientesactivos",
+							"protocol": "http",
+							"host": [
+								"167",
+								"114",
+								"129",
+								"229"
+							],
+							"port": "3100",
+							"path": [
+								"apiigd",
+								"v1",
+								"clientesactivos"
+							]
+						},
+						"description": "La ruta Saldos caja permite conoce los saldos a fecha de corte que hay en las cajas de la empresa."
+					},
+					"response": []
+				},
+				{
+					"name": "Créditos Refinanciados",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJpYXQiOjE2OTA5MTk5Njl9._392yucSJRPSf1ANU97p389R3hXDoA1-uyViEqCuRHQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://167.114.129.229:3100/apiigd/v1/creditosrefinanciados",
+							"protocol": "http",
+							"host": [
+								"167",
+								"114",
+								"129",
+								"229"
+							],
+							"port": "3100",
+							"path": [
+								"apiigd",
+								"v1",
+								"creditosrefinanciados"
+							]
+						},
+						"description": "La ruta Saldos caja permite conoce los saldos a fecha de corte que hay en las cajas de la empresa."
+					},
+					"response": []
+				}
+			],
+			"description": "En la carpeta de vistas tenemos el listado de las rutas que realizan las respectivas consultas que el apilcativo debe mostrar"
+		}
+	]
+}
