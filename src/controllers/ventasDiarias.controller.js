@@ -32,7 +32,7 @@ const getVentasDiarias = async (req, res) => {
             datoc.port_empresa,
             datoc.dbpw_empresa,
             datoc.ip_empresa,
-            "vistaapi"
+            ""
         );
 
         // Ahora si podemos ejecutar la vista en la base de datos del cliente con el objeto de conexion ff:        
@@ -64,7 +64,7 @@ const getVentasDiarias = async (req, res) => {
                     type: DataTypes.DOUBLE,
                     allowNull: false,
                 },
-            	concepto: {
+                concepto: {
                     type: DataTypes.STRING,
                     allowNull: false,
                 },

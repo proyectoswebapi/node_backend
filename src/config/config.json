@@ -1,17 +1,17 @@
 {
   "development": {
-    "username": "vistaapi",
-    "password": "3OhS1s0uo4",
-    "database": "dbacceso_igd",
-    "host": "167.114.129.229",
+    "username": "",
+    "password": "",
+    "database": "",
+    "host": "",
     "port": "3306",
     "dialect": "mysql"
   },
   "production": {
-    "username": "vistaapi",
-    "password": "3OhS1s0uo4",
-    "database": "dbacceso_igd",
-    "host": "167.114.129.229",
+    "username": "",
+    "password": "",
+    "database": "",
+    "host": "",
     "port": "3306",
     "dialect": "mysql"
   }

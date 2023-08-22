@@ -90,7 +90,7 @@ async function login(req, res) {
 
         global.configFile = {
             database: profile.dbname_empresa,
-            username: 'vistaapi',
+            username: '',
             password: profile.dbpw_empresa,
             host: profile.ip_empresa,
             port: profile.port_empresa,

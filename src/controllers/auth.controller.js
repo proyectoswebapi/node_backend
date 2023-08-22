@@ -48,7 +48,7 @@ async function register(req, res) {
 // Acá hacemos el login del usuario
 async function login(req, res) {
     const { nombre, password } = req.body;
-    
+
     // Buscar el usuario en la base de datos por correo electrónico
     const user = await User.findOne({ where: { nombre } });
     console.log(user);
@@ -70,7 +70,7 @@ async function login(req, res) {
 
     // Si el usuario es correcto y hace login, consultamos la tabla de empresa para traer los datos de conexión
     const lnIdUsuario = user.id_empresa;
-	let companyName = null;
+    let companyName = null;
 
     // Creamos un objeto con los detalles de conexi+ón obtenidos de la base de datos de usuarios
     try {
@@ -80,18 +80,18 @@ async function login(req, res) {
         if (!lnIdUsuario) {
             return res.status(400).json({ message: 'Invalid company ID' });
         }
-    	
-    	companyName = profile.name_empresa;
+
+        companyName = profile.name_empresa;
 
         // Eliminar esto
         //console.log(profile.dbname_empresa);
         //console.log(profile.ip_empresa);
         // Hasta acá eliminar
         //Fin parte para traer los datos de conexión de cada usuario
-        
+
         global.configFile = {
             database: profile.dbname_empresa,
-            username: 'vistaapi',
+            username: '',
             password: profile.dbpw_empresa,
             host: profile.ip_empresa,
             port: profile.port_empresa,
@@ -100,9 +100,9 @@ async function login(req, res) {
 
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Internal server error.'});
+        res.status(500).json({ message: 'Internal server error.' });
     }
-    
+
     res.json({ token, nombre: user.nombre, tipo: user.tipo_usuario, empresa: companyName });
     req.session.internalToken = token;
 }
